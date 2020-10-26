@@ -18,17 +18,13 @@
  *       pairs() returns []
  ****************************************************************/
 
-function pairs(names) {
+function pairs(names = []) {
   // Your code goes here
-  let arr1 = []
-  let arr2 = []
-  if (!names || names.length === 0) return []
-  if (names.length === 2) return [[names.getRandom(), names.getRandom()]]
-  while (names.length > 1) {
-    arr1.push(names.getRandom())
-    arr2.push(names.getRandom())
-  }
-  return names.length % 2 !== 0 ? [arr1, arr2, [names.pop()]] : [arr1, arr2]
+  const shuffledPairs = []
+  while (names.length > 1)
+    shuffledPairs.push([names.getRandom(), names.getRandom()])
+  if (names.length === 1) shuffledPairs.push([names.pop()])
+  return shuffledPairs
 }
 
 module.exports = pairs
